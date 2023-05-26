@@ -1,4 +1,4 @@
-import { getUserByEmail } from "../users/users.service";
+import { getUserByEmail,getUserById } from "../users/users.service";
 import { IUser } from "../users/users.interface";
 
 export const loginUserWithEmailAndPassword = async (

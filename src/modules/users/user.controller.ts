@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { User } from "./user.models";
+import User from "./user.models";
 import { IUser } from "./users.interface";
 import * as userService from "./users.service";
 

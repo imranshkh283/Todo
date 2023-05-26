@@ -1,4 +1,4 @@
-import { User } from "./user.models";
+import User from "./user.models";
 import { IUser, NewCreatedUser } from "./users.interface";
 import { genSalt, hash } from "bcrypt";
 
@@ -15,7 +15,7 @@ export const userSignUp = async (userBody: NewCreatedUser): Promise<IUser> => {
 export const getUserByEmail = async (email: string): Promise<IUser | null> =>
   User.findOne({ email });
 
-export const getUser = async (email: string): Promise<IUser | null> =>
-  User.findOne({ email }).select("-password -gender");
+export const getUserById = async (id: string): Promise<IUser | null> =>
+  User.findOne({ id }).select("password");
 
-export default { userSignUp, getUserByEmail, getUser };
+export default { userSignUp, getUserByEmail, getUserById };
