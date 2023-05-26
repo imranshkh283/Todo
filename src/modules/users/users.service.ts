@@ -15,4 +15,7 @@ export const userSignUp = async (userBody: NewCreatedUser): Promise<IUser> => {
 export const getUserByEmail = async (email: string): Promise<IUser | null> =>
   User.findOne({ email });
 
-export default { userSignUp, getUserByEmail };
+export const getUser = async (email: string): Promise<IUser | null> =>
+  User.findOne({ email }).select("-password -gender");
+
+export default { userSignUp, getUserByEmail, getUser };

@@ -6,4 +6,5 @@ export const loginUserWithEmailAndPassword = async (
   password: string
 ) => {
   const user = await getUserByEmail(email);
+  return user;
 };
