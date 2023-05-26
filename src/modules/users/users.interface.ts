@@ -7,7 +7,7 @@ export enum UserGenderEnum {
 }
 
 export interface IUser {
-  // _id: Types.ObjectId;
+  _id: Types.ObjectId;
   first_name: string;
   last_name: string;
   email: string;
