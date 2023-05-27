@@ -6,10 +6,10 @@ import * as postService from "./posts.service";
 export const SECRET_KEY: Secret = config.get<string>("SECRET_KEY");
 
 export const createPost = async (req: Request, res: Response) => {
-  const token = req.headers.authorization!.split("Bearer ")[1];
-  
-  const decode = jwt.verify(token, SECRET_KEY);
-  let created_by: string = (decode as JwtPayload).id;
-  const post = await postService.createPost(req.body, created_by);
+  const token = (req as any).token;
+  req.body.created_by = token.id;
+  req.body.updated_by = token.id;
+
+  const post = await postService.createPost(req.body);
   res.status(201).send(post);
 };
