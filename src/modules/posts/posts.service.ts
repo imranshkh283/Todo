@@ -1,21 +1,18 @@
-import User from "./posts.models";
-import { IUser, NewCreatedUser } from "./posts.interface";
-import { genSalt, hash } from "bcrypt";
+import { PostModel } from "./posts.models";
+import { IPost, NewCreatedPost } from "./posts.interface";
 
-// * create a new user
-export const userSignUp = async (userBody: NewCreatedUser): Promise<IUser> => {
-  const salt = await genSalt(10);
-  userBody.password = await hash(userBody.password, salt);
+// * create a new post
 
-  const user = await User.create(userBody);
-  return user;
+export const createPost = async (
+  postBody: NewCreatedPost,
+  _id: string
+): Promise<NewCreatedPost> => {
+  const post = await PostModel.create({
+    ...postBody,
+    created_by: _id,
+    updated_by: _id,
+  });
+  return post;
 };
 
-// * find a user by email
-export const getUserByEmail = async (email: string): Promise<IUser | null> =>
-  User.findOne({ email });
-
-export const getUserById = async (id: string): Promise<IUser | null> =>
-  User.findOne({ id }).select("password");
-
-export default { userSignUp, getUserByEmail, getUserById };
+export default { createPost };

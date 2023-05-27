@@ -14,4 +14,4 @@ export interface IPost {
   updated_at: Date;
 }
 
-export type NewCreatedPost = IPost;
+export type NewCreatedPost = Pick<IPost, "text" | "title" | "created_by">;

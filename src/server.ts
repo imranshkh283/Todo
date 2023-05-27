@@ -1,9 +1,9 @@
+import config from "config";
 import express from "express";
 import connectDB from "../config/database";
 import routes from "./routes/v1/";
 const app = express();
 
-connectDB();
 app.use(express.json());
 app.get("/", (req, res) => {
   res.send("API Running");
@@ -12,8 +12,10 @@ app.get("/", (req, res) => {
 // v1 api routes
 app.use("/v1", routes);
 
-const server = app.listen(3000, () =>
-  console.log(`Server started on port 3000`)
-);
+const port = config.get<number>("port");
 
+const server = app.listen(port, () =>
+  console.log(`Server started on port ${port}`)
+);
+connectDB();
 export default server;

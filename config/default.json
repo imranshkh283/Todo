@@ -1,6 +1,8 @@
 {
+    "port": 3000,
     "mongoURI": "mongodb://0.0.0.0:27017/Codos",
     "jwtSecret": "jwtSecretToken",
-    "jwtExpiration": 360000
-  }
+    "jwtExpiration": 360000,
+    "SECRET_KEY":"your-secret-key-here"
+}
   
