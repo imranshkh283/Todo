@@ -1,6 +1,6 @@
 import config from "config";
 import express from "express";
-import connectDB from "../config/database";
+import connectDB from "./modules/config/database";
 import routes from "./routes/v1/";
 const app = express();
 
