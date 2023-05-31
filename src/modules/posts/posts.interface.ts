@@ -6,7 +6,6 @@ export interface IPost {
   title: string;
   text: string;
   image: string;
-
   created_by: IUser["_id"];
   created_at: Date;
 
@@ -15,3 +14,9 @@ export interface IPost {
 }
 
 export type NewCreatedPost = Pick<IPost, "text" | "title" | "created_by">;
+
+export type singlePost = Pick<IPost, "_id" | "title" | "text">;
+
+export type singlePostId = Pick<IPost, "_id" | "created_by">;
+
+export type TUpdatePost = Pick<IPost, "_id" | "text" | "title" | "created_by">;
